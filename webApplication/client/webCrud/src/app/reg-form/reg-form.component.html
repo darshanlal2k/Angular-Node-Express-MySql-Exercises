@@ -1,0 +1,122 @@
+<div class="container">
+    <div mat-dialog-title>Registration Form</div>
+    <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" placeholder="Placeholder" formControlName="name">
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+            <div *ngIf="regForm.get('name')?.invalid && regForm.get('name')?.touched">
+                <div *ngIf="regForm.get('name')?.errors?.['required']">User Name is required</div>
+                <div *ngIf="regForm.get('name')?.errors?.['minlength']">Min Length is 3</div>
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Age</mat-label>
+                <input matInput type="text" placeholder="Placeholder" formControlName="age">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <div *ngIf="regForm.get('age')?.invalid && regForm.get('age')?.touched">
+                <div *ngIf="regForm.get('age')?.errors?.['required']">Age is required</div>
+                <div *ngIf="regForm.get('age')?.errors?.['maxlength']">Maxlength is 3</div>
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="regForm.get('dob')?.invalid && regForm.get('dob')?.touched">
+                <div *ngIf="regForm.get('dob')?.errors?.['required']">Date Of Birth is required</div>
+                <!-- <div *ngIf="regForm.get('dob')?.errors?.['minlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input matInput type="email" placeholder="pat@example.com" formControlName="email" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <div *ngIf="regForm.get('email')?.invalid && regForm.get('email')?.touched">
+                <div *ngIf="regForm.get('email')?.errors?.['required']">Email is required</div>
+                <!-- <div *ngIf="regForm.get('email')?.errors?.['minlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <div *ngIf="regForm.get('password')?.invalid && regForm.get('password')?.touched">
+                <div *ngIf="regForm.get('password')?.errors?.['required']">User Name is required</div>
+                <div *ngIf="regForm.get('password')?.errors?.['minlength']">Min Length is 10</div>
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="text" placeholder="1234567890" formControlName="phoneNumber" required>
+                <!-- <mat-icon matSuffix>phone</mat-icon>
+                <mat-hint>Include area code</mat-hint> -->
+            </mat-form-field>
+            <div *ngIf="regForm.get('phoneNumber')?.invalid && regForm.get('phoneNumber')?.touched">
+                <div *ngIf="regForm.get('phoneNumber')?.errors?.['required']">User Name is required</div>
+                <div *ngIf="regForm.get('phoneNumber')?.errors?.['minlength']">Min Length is 10</div>
+                <div *ngIf="regForm.get('phoneNumber')?.errors?.['maxlength']">Max Length is 10</div>
+            </div>
+        </div>
+        <div>
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-label>Gender</mat-label>
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="others">Others</mat-radio-button>
+            </mat-radio-group>
+
+            <div *ngIf="regForm.get('gender')?.invalid && regForm.get('gender')?.touched">
+                <div *ngIf="regForm.get('gender')?.errors?.['required']">Gender is required</div>
+            </div>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>District</mat-label>
+                <mat-select formControlName="district">
+                    <mat-option *ngFor="let option of districts" [value]="option">{{option}}</mat-option>
+                </mat-select>
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+
+                <mat-hint>Here's the dropdown arrow ^</mat-hint> -->
+            </mat-form-field>
+            <div *ngIf="regForm.get('district')?.invalid && regForm.get('district')?.touched">
+                <div *ngIf="regForm.get('district')?.errors?.['required']">District is required</div>
+            </div>
+        </div>
+        <div class="">
+            <mat-form-field appearance="outline">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..." formControlName="comment"></textarea>
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <div *ngIf="regForm.get('comment')?.invalid && regForm.get('comment')?.touched">
+                <div *ngIf="regForm.get('comment')?.errors?.['required']">Comment is required</div>
+            </div>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-raised-button type="submit">Submit</button>
+        </div>
+    </form>
+</div>

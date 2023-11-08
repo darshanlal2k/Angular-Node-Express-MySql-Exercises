@@ -1,0 +1,57 @@
+<!-- <div>
+    
+</div> -->
+<body>
+    <a [routerLink]="['/registration']">Register</a>
+    <div class="col-lg-3 mx-auto totalContainer ">
+
+        <div class="mainContainer ">
+    
+    
+            <div class="col-sm-12 mx-auto rounded  text-center p-3">
+                <h1 class="" mat-dialog-title>Log in</h1>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
+                    <div class="darshan mb-3">
+                        <mat-form-field appearance="outline" class="mat-form-field-wrapper"
+                            [hideRequiredMarker]="hideRequired">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" placeholder="pat@example.com" formControlName="email">
+                            <!-- <mat-hint>Hint</mat-hint> -->
+                            <mat-icon matSuffix>mail</mat-icon>
+                        </mat-form-field>
+                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                        <div class="text-start" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                            <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</div>
+                            <!-- <div *ngIf="regForm.get('email')?.errors?.['minlength']">Min Length is 3</div> -->
+                        </div>
+                    </div>
+                    <div class="darshan mb-3">
+                        <mat-form-field appearance="outline" class="mat-form-field-wrapper"
+                            [hideRequiredMarker]="hideRequired">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <div class="text-start"
+                            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                            <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+                            <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Min Length is 10</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div mat-dialog-actions>
+                            <button mat-raised-button type="submit">Submit</button>
+                        </div>
+                        <!-- <div mat-dialog-actions>
+                        <button mat-raised-button type="submit">Cancel</button>
+                    </div> -->
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

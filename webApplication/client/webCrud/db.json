@@ -1,0 +1,15 @@
+{
+  "registration": [
+    {
+      "username": "",
+      "age": "",
+      "dob": "",
+      "email": "",
+      "password": "",
+      "phoneNumber": "",
+      "gender": "",
+      "district": "",
+      "message": ""
+    }
+  ]
+}

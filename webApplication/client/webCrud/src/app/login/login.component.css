@@ -1,0 +1,42 @@
+mat-form-field {
+    width: 100%;
+    /* margin: 0 auto; */
+    /* margin: auto 0; */
+    /* margin-bottom: 0; */
+}
+
+/* .example-form {
+    margin: auto 0;
+} */
+.background_color {
+    background-color: #defdfd;
+}
+
+body {
+    background-color: rgb(223, 244, 249);
+}
+
+.darshan {
+    width: 100%;
+    /* background-color: blue; */
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.mainContainer {
+    width: 100%;
+    background-color: rgb(198, 244, 250);
+    border-radius: 16px;
+}
+
+.totalContainer {
+    background-color: white;
+    padding: 8px;
+    border-radius: 24px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    /* margin-bottom: 0; */
+    padding-bottom: 0;
+    margin-bottom: -1.25em;
+}
