@@ -1,0 +1,156 @@
+<div class="col-sm-4 mx-auto rounded border p-2 mt-3 bg-info">
+    <form class="bg-white p-2 rounded" [formGroup]="userform" (ngSubmit)="onSubmit()" >
+        <!-- Username input -->
+        <div class="row mb-3">
+            <label for="username" class="col-sm-4 col-form-label">Username</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+            <div *ngIf="userform.get('username')?.invalid && userform.get('username')?.touched">
+                <div *ngIf="userform.get('username')?.errors?.['required']">User Name is required</div>
+                <div *ngIf="userform.get('username')?.errors?.['minlength']">Min Length is 3</div>
+            </div>
+        </div>
+        <!-- Age input -->
+        <div class="row mb-3">
+            <label for="age" class="col-sm-4 col-form-label">Age</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="age" formControlName="age">
+            </div>
+            <div *ngIf="userform.get('age')?.invalid && userform.get('age')?.touched">
+                <div *ngIf="userform.get('age')?.errors?.['required']">Age is required</div>
+                <div *ngIf="userform.get('age')?.errors?.['maxlength']">Max Length is 3</div>
+            </div>
+        </div>
+        <!-- DOB input -->
+        <div class="row mb-3">
+            <label for="dob" class="col-sm-4 col-form-label">Date Of Birth</label>
+            <div class="col-sm-8">
+                <input type="date" class="form-control" id="dob"  formControlName="dob">
+            </div>
+            <div *ngIf="userform.get('dob')?.invalid && userform.get('dob')?.touched">
+                <div *ngIf="userform.get('dob')?.errors?.['required']">Date Of Birth is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- Email input -->
+        <div class="row mb-3">
+            <label for="email" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div *ngIf="userform.get('email')?.invalid && userform.get('email')?.touched">
+                <div *ngIf="userform.get('email')?.errors?.['required']">Email is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- Password input -->
+        <div class="row mb-3">
+            <label for="password" class="col-sm-4  col-form-label">Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div *ngIf="userform.get('password')?.invalid && userform.get('password')?.touched">
+                <div *ngIf="userform.get('password')?.errors?.['required']">Password is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- phone number input -->
+        <div class="row mb-3">
+            <label for="phoneNumber" class="col-sm-4  col-form-label">Phone Number</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="phoneNumber"
+                    formControlName="phoneNumber">
+            </div>
+            <div *ngIf="userform.get('phoneNumber')?.invalid && userform.get('phoneNumber')?.touched">
+                <div *ngIf="userform.get('phoneNumber')?.errors?.['required']">Phone Number is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- gender input -->
+        <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-4 pt-0">Gender</legend>
+            <div class="col-sm-8">
+                <div class="row">
+                    <!-- male input -->
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="male" value="male"
+                                formControlName="gender">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                    </div>
+                    <!-- female input -->
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="female" value="female"
+                                formControlName="gender">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <!-- others input -->
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"  id="others" value="others"
+                                formControlName="gender">
+                            <label class="form-check-label" for="others">Others</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="userform.get('gender')?.invalid && userform.get('gender')?.touched">
+                <div *ngIf="userform.get('gender')?.errors?.['required']">Gender is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </fieldset>
+        <!-- district input -->
+        <div class="row mb-3">
+            <label for="district" class="col-sm-4 col-form-label">District</label>
+            <div class="col-sm-8">
+                <select name="district" id="district" class="form-select" formControlName="district">
+                    <option selected disabled value="">Choose...</option>
+                    <option value="">...</option>
+                    <option value="">...</option>
+                    <option value="">...</option>
+                    <option value="">...</option>
+                    <option value="">...</option>
+                </select>
+            </div>
+            <div *ngIf="userform.get('district')?.invalid && userform.get('district')?.touched">
+                <div *ngIf="userform.get('district')?.errors?.['required']">District is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- Message input -->
+        <div class="row mb-3">
+            <label class="col-form-label col-sm-4" for="message">Message</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" id="message" name="message" rows="2"
+                    formControlName="message"></textarea>
+            </div>
+            <div *ngIf="userform.get('message')?.invalid && userform.get('message')?.touched">
+                <div *ngIf="userform.get('message')?.errors?.['required']">Message is required</div>
+                <!-- <div *ngIf="userform.get('age')?.errors?.['maxlength']">Min Length is 3</div> -->
+            </div>
+        </div>
+        <!-- buttons input -->
+        <div class="row mb-3 text-center">
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary">Cancel</button>
+            </div>
+            <div class="col-sm-6">
+                <button type="submit" [disabled]="!userform.valid" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <!-- <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                    </label>
+                </div>
+            </div>
+        </div> -->
+    </form>
+</div>
