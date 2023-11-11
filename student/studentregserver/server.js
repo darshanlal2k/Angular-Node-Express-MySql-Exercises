@@ -17,12 +17,14 @@ const db = mysql.createConnection({
 });
 
 db.connect((error) => {
-    if (error) {
-        console.log("Database not connected");
-    }
-    else {
-        console.log("Database connected");
-    }
+
+    error ? console.log("Database not connected") : console.log("Database connected");
+    // if (error) {
+    //     console.log("Database not connected");
+    // }
+    // else {
+    //     console.log("Database connected");
+    // }
 });
 
 
@@ -30,6 +32,8 @@ db.connect((error) => {
 server.get("/api/student", (request, response) => {
     let sql = "SELECT * from student";
     db.query(sql, (error, result) => {
+
+        
         if (error) {
             console.log("Error connecting to database");
 
